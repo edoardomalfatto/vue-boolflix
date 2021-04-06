@@ -14,7 +14,6 @@ var root = new Vue({
                     response.data.results.forEach(film => {
                         this.searchResult.push(film);
                     });
-                    this.searchedFilm = ""
                 })
         }
     }

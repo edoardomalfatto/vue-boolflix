@@ -14,7 +14,7 @@
 <body>
     <div id="app">
         <header>
-            <input @keyup.enter="searchFilm" v-model="searchedFilm" placeholder="Cerca un Film" type="text">
+            <input @keyup="searchFilm" v-model="searchedFilm" placeholder="Cerca un Film" type="text">
             <button @click="searchFilm"> Search</button>
         </header>
         <main>
