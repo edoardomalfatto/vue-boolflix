@@ -25,8 +25,9 @@
                     <h2>{{film.title}}{{film.name}}</h2>
                 </li>
                 <li v-if="film.original_title != film.title || film.name != film.original_name">{{film.original_title}}{{film.original_name}}</li>
-                <li><img :src="getPosterImage(film.poster_path)" alt=""></li>
-                <li><img :src="getFlag(film.original_language)"> {{film.original_language}}
+                <li><img :src="getPosterImage(film.poster_path)" @error="onImgError" alt=""></li>
+                <li><img :src="getFlag(film.original_language)">
+                    <!-- {{film.original_language}} -->
                 </li>
                 <li v-if="film.vote_average === 0">
 

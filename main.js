@@ -34,13 +34,17 @@ var root = new Vue({
                 })
         },
         getFlag(language) {
-            return this.flagUrls[language];
+            if (Object.keys(this.flagUrls).includes(language) == true) {
+                return this.flagUrls[language];
+            } else {
+                return "https://image.flaticon.com/icons/png/128/1355/1355883.png";
+            }
         },
         getPosterImage(image) {
             return ("https://image.tmdb.org/t/p/w342/" + image);
+        },
+        onImgError(e) {
+            e.target.src = "https://upload.wikimedia.org/wikipedia/commons/6/64/Poster_not_available.jpg"
         }
     }
 });
-
-
-//se film.original language non è incluso nell'array di bandiere che ho allora metti una stringa predefinita
