@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+
+/* Header */
+
 header {
     height: 80px;
     background-color: black;
@@ -80,4 +83,72 @@ header {
 
 .right_nav ul .myuser a img {
     height: 100%;
+}
+
+
+/* Main */
+
+.cards {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: rgb(27, 27, 27);
+}
+
+.card {
+    margin: 10px;
+    background-color: transparent;
+    width: 171px;
+    height: 256px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px;
+    /* Remove this if you don't want the 3D effect */
+}
+
+.card_wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.3s;
+    transform-style: preserve-3d;
+}
+
+.card:hover .card_wrapper {
+    transform: rotateY(180deg);
+}
+
+.card_front,
+.card_back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.card_front {
+    overflow: hidden;
+    background-color: #bbb;
+    color: black;
+}
+
+.card_front img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #bbb;
+    color: black;
+}
+
+.card_back {
+    background-color: black;
+    color: white;
+    transform: rotateY(180deg);
+    overflow-y: auto;
+}
+
+.card_back ul li {
+    list-style: none;
 }

@@ -50,22 +50,48 @@
         </header>
         <main>
             <h2 v-if="searchResult.length == 0">Nessun risultato trovato,se non hai ancora cercato nulla inizia qui sopra!</h2>
-            <ul v-for="film in searchResult">
+            <div class="cards">
+                <div v-for="film in searchResult" class="card">
+                    <div class="card_wrapper">
+                        <div class="card_front">
+                            <img :src="getPosterImage(film.poster_path)" @error="onImgError" alt="">
+                        </div>
+                        <div class="card_back">
+                            <ul>
+                                <li>
+                                    <h2>{{film.title}}{{film.name}}</h2>
+                                </li>
+                                <li v-if="film.original_title != film.title || film.name != film.original_name">{{film.original_title}}{{film.original_name}}</li>
+                                <li><img :src="getFlag(film.original_language)">
+                                    <!-- {{film.original_language}} -->
+                                </li>
+                                <li v-if="film.overview">{{film.overview}}</li>
+                                <li>
+                                    <i v-for="star in film.vote_average" class="fas fa-star"></i>
+                                    <i v-for="vstar in (5-film.vote_average)" class="far fa-star"></i>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <ul v-for="film in searchResult">
                 <li>
                     <h2>{{film.title}}{{film.name}}</h2>
                 </li>
                 <li v-if="film.original_title != film.title || film.name != film.original_name">{{film.original_title}}{{film.original_name}}</li>
                 <li><img :src="getPosterImage(film.poster_path)" @error="onImgError" alt=""></li>
                 <li><img :src="getFlag(film.original_language)">
-                    <!-- {{film.original_language}} -->
-                </li>
 
+                </li>
+                <li v-if="film.overview">{{film.overview}}</li>
                 <li>
                     <i v-for="star in film.vote_average" class="fas fa-star"></i>
                     <i v-for="vstar in (5-film.vote_average)" class="far fa-star"></i>
                 </li>
 
-            </ul>
+            </ul> -->
         </main>
 
     </div>
