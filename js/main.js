@@ -29,7 +29,7 @@ var root = new Vue({
                     response.data.results.forEach(tvserie => {
                         tvserie.vote_average = Math.ceil(parseInt(tvserie.vote_average / 2));
                         this.searchResult.push(tvserie);
-                        console.log(this.searchResult)
+                        console.log(this.searchResult);
                     });
                 })
         },

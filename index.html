@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -15,8 +16,37 @@
 <body>
     <div id="app">
         <header>
-            <input @keyup="searchFilm" v-model="searchedFilm" placeholder="Cerca un Film" type="text">
-            <button @click="searchFilm"> Search</button>
+            <div class="header_wrapper">
+                <div class="left_nav">
+                    <div class="logo">
+                        <img src="https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="Netflix Logo">
+                    </div>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Serie Tv</a></li>
+                        <li><a href="#">Film</a></li>
+                        <li><a href="#">Originali</a></li>
+                        <li><a href="#">Aggiunti di Recente</a></li>
+                        <li><a href="#">La mia lista</a></li>
+                    </ul>
+
+                </div>
+                <div class="right_nav">
+                    <div class="searchbar">
+                        <input @keyup="searchFilm" v-model="searchedFilm" placeholder="Cerca un Film" type="text">
+                        <button @click="searchFilm"> Search</button>
+                    </div>
+                    <ul>
+                        <li><a href="#">Bambini</a></li>
+                        <li class="notification"><a href="#"><i class="fas fa-bell"></i></a></li>
+                        <li class="myuser">
+                            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Netflix User"> <i class="fas fa-caret-down"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
         </header>
         <main>
             <h2 v-if="searchResult.length == 0">Nessun risultato trovato,se non hai ancora cercato nulla inizia qui sopra!</h2>
@@ -29,46 +59,17 @@
                 <li><img :src="getFlag(film.original_language)">
                     <!-- {{film.original_language}} -->
                 </li>
-                <li v-if="film.vote_average === 0">
 
-                    <i v-for="vstar in 5" class="far fa-star"></i>
-
-                </li>
-
-                <li v-else-if="film.vote_average === 1">
+                <li>
                     <i v-for="star in film.vote_average" class="fas fa-star"></i>
-                    <i v-for="vstar in 4" class="far fa-star"></i>
-
-
+                    <i v-for="vstar in (5-film.vote_average)" class="far fa-star"></i>
                 </li>
 
-                <li v-else-if="film.vote_average === 2">
-                    <i v-for="star in film.vote_average" class="fas fa-star"></i>
-                    <i v-for="vstar in 5-film.vote_average" class="far fa-star"></i>
-
-                </li>
-
-                <li v-else-if="film.vote_average === 3">
-                    <i v-for="star in film.vote_average" class="fas fa-star"></i>
-                    <i v-for="vstar in 5-film.vote_average" class="far fa-star"></i>
-
-                </li>
-
-                <li v-else-if="film.vote_average === 4">
-                    <i v-for="star in film.vote_average" class="fas fa-star"></i>
-                    <i v-for="vstar in 5-film.vote_average" class="far fa-star"></i>
-
-                </li>
-
-                <li v-else-if="film.vote_average === 5">
-                    <i v-for="star in film.vote_average" class="fas fa-star"></i>
-
-                </li>
             </ul>
         </main>
 
     </div>
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
